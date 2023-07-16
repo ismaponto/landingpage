@@ -6,9 +6,12 @@ const emailRoutes = require('./routes/emailRoutes');
 const cors = require('cors');
 
 
-
 // Configurar CORS
-app.use(cors());
+app.use(cors({
+    origin: 'https://ismaponto.github.io',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+}));
 
 
 // Configuración de variables de entorno
@@ -21,7 +24,7 @@ app.use(express.json());
 app.use('/api/email', emailRoutes);
 
 // Puerto del servidor
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Inicio del servidor
 app.listen(port, () => {
